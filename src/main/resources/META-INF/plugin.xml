@@ -1,0 +1,37 @@
+<idea-plugin>
+    <id>com.dwai.idebridge</id>
+    <name>DWAI</name>
+    <vendor>DWAI</vendor>
+    <description>
+        <![CDATA[
+        <h3>DWAI — PyCharm MCP Server</h3>
+        <p>
+        在 PyCharm 中启动 MCP 服务，供 AI Agent 通过 MCP 协议调用 IDE 工具：
+        获取编辑器上下文、代码诊断、终端执行、脚本运行、Diff 推送与审批。
+        </p>
+        <h4>MCP 工具列表</h4>
+        <ul>
+            <li><code>editor.get_context</code> — 获取光标、选中文本、附近代码和项目信息</li>
+            <li><code>diagnostics.get_all</code> — 获取项目、静态错误和运行输出</li>
+            <li><code>diagnostics.get_full_output</code> — 获取 Run 窗口完整输出</li>
+            <li><code>editor.insert</code> — 在光标处插入代码</li>
+            <li><code>run.start</code> — 非阻塞运行脚本</li>
+            <li><code>diff.apply</code> — 推送 Diff 到编辑器标签页审批</li>
+            <li><code>diff.get_pending</code> — 查询审批结果</li>
+            <li><code>file.save_close</code> — 保存并关闭文件</li>
+            <li><code>file.list_open</code> — 查询打开的文件</li>
+        </ul>
+        ]]>
+    </description>
+
+    <version>1.0.0</version>
+    <idea-version since-build="233" until-build="253.*"/>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <postStartupActivity implementation="com.dwai.idebridge.DwaiPlugin"/>
+        <statusBarWidgetFactory implementation="com.dwai.idebridge.ui.DiffStatusBarWidgetFactory"/>
+    </extensions>
+
+</idea-plugin>
