@@ -1,0 +1,16 @@
+name: Publish MCP Server
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish-mcp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publish MCP Server
+        uses: modelcontextprotocol/registry/.github/actions/publish-mcp-server@main
+        with:
+          server-json: server.json
+          github-token: ${{ secrets.GITHUB_TOKEN }}

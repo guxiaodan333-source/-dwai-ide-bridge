@@ -1,0 +1,22 @@
+{
+  "id": "dwai-ide-bridge",
+  "name": "DWAI IDE Bridge",
+  "description": "AI Agent 与 JetBrains IDE 的桥接工具：获取光标代码上下文、诊断运行报错、执行脚本、推送 Diff 修改供开发者审批。",
+  "author": "DWAI",
+  "homepage": "https://github.com/guxiaodan333-source/-dwai-ide-bridge",
+  "license": "MIT",
+  "server": {
+    "type": "http",
+    "url": "http://127.0.0.1:8765/mcp",
+    "capabilities": {
+      "tools": {}
+    }
+  },
+  "installation": {
+    "plugin": {
+      "type": "jetbrains",
+      "id": "com.dwai.idebridge",
+      "download": "https://github.com/guxiaodan333-source/-dwai-ide-bridge/releases/download/v1.0.0/DWAI-1.0.0.zip"
+    }
+  }
+}
