@@ -41,6 +41,63 @@ gradlew.bat buildPlugin
 
 编译产物在 `build/distributions/DWAI-1.0.0.zip`
 
+## AI Agent 配置（注册 MCP 服务）
+
+DWAI 通过 MCP 协议与 AI Agent 通信。AI Agent 需要将 DWAI 注册为 MCP 服务器才能发现和使用工具。
+
+### Hermes Agent
+
+在配置文件 `~/.hermes/config.yaml` 中添加：
+
+```yaml
+mcpServers:
+  dwai-ide-bridge:
+    url: http://127.0.0.1:8765/mcp
+```
+
+或通过命令行注册：
+
+```bash
+hermes mcp add dwai-ide-bridge --url http://127.0.0.1:8765/mcp
+```
+
+### Claude Code / Claude Desktop
+
+在 `claude_desktop_config.json` 中添加：
+
+```json
+{
+  "mcpServers": {
+    "dwai-ide-bridge": {
+      "url": "http://127.0.0.1:8765/mcp"
+    }
+  }
+}
+```
+
+### Cursor
+
+在 Cursor 设置中启用 MCP 服务器，地址填：
+
+```
+http://127.0.0.1:8765/mcp
+```
+
+### 验证
+
+配置完成后，AI Agent 即可通过 MCP 调用 DWAI 的所有工具：
+
+```json
+// 查看可用工具列表
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "tools/list"
+}
+```
+
+返回应包含 10 个工具：`editor.get_context`、`diagnostics.get_all`、`run.start`、`diff.apply` 等。
+
 ## 使用方式
 
 插件安装后自动在 `127.0.0.1:8765` 启动 HTTP + MCP 服务。
