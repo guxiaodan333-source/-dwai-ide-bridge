@@ -1,16 +1,28 @@
 name: Publish MCP Server
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - 'v*'
 
 jobs:
-  publish-mcp:
+  publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
     steps:
       - uses: actions/checkout@v4
-      - name: Publish MCP Server
-        uses: modelcontextprotocol/registry/.github/actions/publish-mcp-server@main
+
+      - name: Publish to MCP Registry
+        uses: OtherVibes/mcp-publish-action@v1
         with:
-          server-json: server.json
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: com.dwai.idebridge/server
+          description: "AI Agent 与 JetBrains IDE 的桥接工具：获取光标代码上下文、诊断运行报错、执行脚本、推送 Diff 修改供开发者审批。"
+          version: "1.0.0"
+          registry_type: mcpb
+          identifier: https://github.com/guxiaodan333-source/-dwai-ide-bridge/releases/download/v1.0.0/DWAI-1.0.0.zip
+          transport_type: streamable-http
+          transport_url: http://127.0.0.1:8765/mcp
+          website_url: https://github.com/guxiaodan333-source/-dwai-ide-bridge
