@@ -18,11 +18,11 @@ jobs:
       - name: Publish to MCP Registry
         uses: OtherVibes/mcp-publish-action@v1
         with:
-          name: com.dwai.idebridge/server
+          name: io.github.guxiaodan333-source/dwai-ide-bridge
           description: "AI Agent 与 JetBrains IDE 的桥接工具：获取光标代码上下文、诊断运行报错、执行脚本、推送 Diff 修改供开发者审批。"
           version: "${{ github.ref_name }}"
           registry_type: mcpb
-          identifier: https://github.com/guxiaodan333-source/-dwai-ide-bridge/releases/download/${{ github.ref_name }}/DWAI-1.0.0.zip
+          identifier: https://github.com/guxiaodan333-source/-dwai-ide-bridge/releases/download/${{ github.ref_name }}/DWAI-MCP-1.0.0.zip
           file_sha256: 50132056b608ddcc52e2e1c1f3a24976919c60926e425c77dc9f8be8615b0439
           transport_type: streamable-http
           transport_url: http://127.0.0.1:8765/mcp
