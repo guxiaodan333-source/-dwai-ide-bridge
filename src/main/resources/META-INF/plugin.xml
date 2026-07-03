@@ -4,9 +4,9 @@
     <vendor>DWAI</vendor>
     <description>
         <![CDATA[
-        <h3>DWAI — PyCharm MCP Server</h3>
+        <h3>DWAI — IDE Bridge</h3>
         <p>
-        在 PyCharm 中启动 MCP 服务，供 AI Agent 通过 MCP 协议调用 IDE 工具：
+        在 JetBrains IDE 中启动 MCP + HTTP 服务，供 AI Agent 调用 IDE 工具：
         获取编辑器上下文、代码诊断、终端执行、脚本运行、Diff 推送与审批。
         </p>
         <h4>MCP 工具列表</h4>

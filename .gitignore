@@ -10,6 +10,16 @@ build/
 *.iws
 out/
 
+# Python
+__pycache__/
+*.pyc
+
 # OS
 .DS_Store
 Thumbs.db
+
+# Test files
+test_*.ps1
+test_*.py
+diff_test.json
+diff-interaction.md
